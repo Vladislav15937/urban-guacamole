@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View user</title>
+</head>
+<body>
+<h1 th:text="${views.getUsername()}+' '+'page'"></h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+
+        <td th:text="${views.getId()}"></td>
+        <td th:text="${views.getUsername()}"></td>
+        <td th:text="${views.getPassword()}"></td>
+        <td th:text="${views.getEmail()}"></td>
+        <td th:text="${views.getRoles()}"></td>
+
+        <td>
+            <a th:href="@{'/admin/delete?id=' + ${views.getId()}}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/update?id=' + ${views.getId()}}">Update</a>
+        </td>
+    </table>
+</div>
+<div>
+    <a th:href="@{/admin/add}">Add User</a>
+</div>
+<div>
+    <a th:href="@{/logout}">Exit</a>
+</div>
+
+</body>
+</html>

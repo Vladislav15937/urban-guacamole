@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My</title>
+</head>
+<body>
+<h1>My page</h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            >
+            <th>Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+
+        <td th:text="${view.getId()}"></td>
+        <td th:text="${view.getUsername()}"></td>
+        <td th:text="${view.getPassword()}"></td>
+        <td th:text="${view.getEmail()}"></td>
+        <td th:text="${view.getRoles()}"></td>
+
+        <td>
+            <a th:href="@{'/admin/delete?id=' + ${view.getId()}}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/update?id=' + ${view.getId()}}">Update</a>
+        </td>
+    </table>
+</div>
+<div>
+    <a th:href="@{/admin/add}">Add User</a>
+</div>
+<div>
+    <a th:href="@{/logout}">Exit</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Users</title>
+</head>
+<body>
+<h1>User List</h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roles</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Info</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+
+        <tr th:each="msg : ${person}">
+            <td th:text="${msg.getId()}"></td>
+            <td th:text="${msg.getUsername()}"></td>
+            <td th:text="${msg.getRoles()}"></td>
+            <td th:text="${msg.getEmail()}"></td>
+            <td th:text="${msg.getPassword()}"></td>
+            <td><a th:href="@{'/admin/view?id='+${msg.getId()}}">Details</a></td>
+
+            <td>
+                <a th:href="@{'/admin/delete?id=' + ${msg.getId()}}">Delete</a>
+            </td>
+            <td>
+                <a th:href="@{'/admin/update?id=' + ${msg.getId()}}">Update</a>
+            </td>
+    </table>
+</div>
+<div>
+    <a th:href="@{/admin/add}">Add User</a>
+</div>
+<div>
+    <a th:href="@{/logout}">Exit</a>
+</div>
+
+</body>
+</html>

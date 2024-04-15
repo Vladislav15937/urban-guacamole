@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<h1>Add User</h1>
+<form th:method="POST" th:action="@{/admin/add}" th:object="${person}">
+    <label> Name <input type="text" th:field="*{username}"/></label><br/>
+    <label>Password <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           th:field="*{password}"/></label><br/>
+    <label>Email <input type="text" th:field="*{email}"/></label><br/>
+    <label>Roles:
+        <input type="checkbox" name="roles"
+               th:each="roles : ${roles}"
+               th:text="${roles.getName()}"
+               th:value="${roles.getId()}"
+               th:field="*{roles}"
+        /><br/>
+    </label>
+    <div id="message">
+        <h3>Пароль должен содержать:</h3>
+        <p id="letter" class="invalid"><b>Маленькую</b> букву</p>
+        <p id="capital" class="invalid"><b>Заглавную (большую)</b> букву</p>
+        <p id="number" class="invalid"><b>Цифру</b></p>
+        <p id="length" class="invalid">Минимум <b>8 символов</b></p>
+    </div>
+
+    <button type="submit">Add</button>
+</form>
+<div>
+    <a th:href="@{/logout}">Exit</a>
+</div>
+</body>
+</html>
